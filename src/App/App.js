@@ -6,9 +6,9 @@ import './App.css';
 const Home = React.lazy(() => import('./Home/Home'));
 
 class App extends Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
-  }
+  }*/
 
   render() {
     return (
