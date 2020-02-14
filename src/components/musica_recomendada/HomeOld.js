@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // Css
 import './Home.css';
 
-class Home extends Component {
+class HomeOld extends Component {
   constructor(props) {
     super(props);
 
@@ -58,4 +58,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default HomeOld;

@@ -1,0 +1,14 @@
+.album {
+  margin: 3em auto;
+  max-width: 50em;
+}
+
+.album h1 {
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

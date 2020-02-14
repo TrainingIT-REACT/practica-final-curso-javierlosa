@@ -1,0 +1,28 @@
+  .card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    margin: 10px;
+    flex: 0 1 calc(30%);
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  .card .card-body {
+    text-align: center;
+  }
+
+  .card img {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .card-descripcion {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
