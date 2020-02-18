@@ -8,8 +8,26 @@ const Song = React.lazy(() => import('../song/Song'));
 class Album extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      loading: true,
+      songs: []
+    }
   }
 
+  async componentDidMount() {
+    try {
+      const res = await fetch('/songs');
+      const json = await res.json();
+      this.setState((prevState) => ({
+        ...prevState,
+        loading: false,
+        songs: json
+      }));
+    } catch(err) {
+      console.error("Error accediendo al servidor", err);
+    }
+  }
 
   render() {
     return (
@@ -27,7 +45,7 @@ class Album extends Component {
         </div>
         <div className="col-sm-8">
           <div className="lista-canciones">
-            {this.props.songs.map(song => 
+            {this.state.songs.map(song => 
               (song.album_id == this.props.albumId) ? <Song key={song.id} title={song.name} duration={song.seconds} link="enlace a reproducción"/> : ''
             )}
           </div>
