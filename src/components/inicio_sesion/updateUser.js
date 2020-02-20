@@ -2,7 +2,7 @@ import React, { createRef } from 'react';
 import { connect } from 'react-redux';
 
 // Acciones
-import { updateUser } from './actions/user';
+import { updateUser } from '../../actions/user';
 
 const UpdateUser = ({ updateUser }) => {
   const name = createRef();

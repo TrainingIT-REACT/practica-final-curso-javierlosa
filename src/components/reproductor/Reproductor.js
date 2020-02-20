@@ -6,19 +6,35 @@ import './Reproductor.css';
 class Reproductor extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      loading: true,
+      song: {}
+    }
+  }
+
+  async componentDidMount() {
+    try {
+      const res = await fetch(`/songs/${this.props.match.params.songId}`);
+      const json = await res.json();
+      console.log(json);
+      this.setState((prevState) => ({
+        ...prevState,
+        loading: false,
+        song: json
+      }));
+    } catch(err) {
+      console.error("Error accediendo al servidor", err);
+    }
   }
 
   render() {
     return (
         <div className="reproductor">
-          <a href={this.props.link}>
-            <span>{this.props.title}</span>
-            <span>{this.props.duration}</span>
-          </a>
-          <audio ref="audio_tag" src={this.props.audio} controls autoPlay/>
+          <audio ref="audio_tag" src={this.state.song.audio} controls autoPlay/>
         </div>
     );
   }
 }
 
-export default Song;
+export default Reproductor;
