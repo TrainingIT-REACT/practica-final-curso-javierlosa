@@ -12,7 +12,8 @@ class Album extends Component {
     this.state = {
       loading: true,
       songs: [],
-      album: {}
+      album: {},
+      duration: ''
     }
   }
 
@@ -22,12 +23,18 @@ class Album extends Component {
       const jsonAlbum = await resAlbum.json();
       const resSongs = await fetch('/songs');
       const jsonSongs = await resSongs.json();
+      var duration = 0;
+      jsonSongs.map(song => (song.album_id == this.props.match.params.albumId) ? duration = duration + song.seconds : '');
+      duration = Math.trunc(duration/=60);
+      
       this.setState((prevState) => ({
         ...prevState,
         loading: false,
         songs: jsonSongs,
-        album: jsonAlbum
+        album: jsonAlbum,
+        duration: duration + ' minutos'
       }));
+
     } catch(err) {
       console.error("Error accediendo al servidor", err);
     }
@@ -45,7 +52,7 @@ class Album extends Component {
           <div className="descripcion">
             <h5 className="">{this.state.album.name}</h5>
             <span className="row col-sm-12">{this.state.album.artist}</span>
-            /* Añadir a la descripción el nombre del artista además de la duración total de sus canciones */
+            <span className="row col-sm-12">{this.state.duration}</span>
           </div>
         </div>
         <div className="col-sm-8">

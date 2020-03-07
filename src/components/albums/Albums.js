@@ -37,7 +37,7 @@ class Albums extends Component {
           <p>Cargando...</p>
           : <div className="cards">
             {this.state.albums.map(album => 
-              <Card key={album.id} imageSrc={album.cover} imageAlt={album.name} title={album.name} description={album.artist} link={album.id}/>
+              <Card key={album.id} imageSrc={album.cover} imageAlt={album.name} title={album.name} description={album.artist} titleLink={`/album/${album.id}`}/>
             )}
           </div>
         }

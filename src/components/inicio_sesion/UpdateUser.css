@@ -1,0 +1,12 @@
+Form {
+
+}
+
+Form .label-input {
+    text-align: center;
+    display: block;
+}
+
+Form label {
+    padding: 10px;
+}

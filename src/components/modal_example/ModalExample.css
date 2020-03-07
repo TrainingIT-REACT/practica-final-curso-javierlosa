@@ -7,3 +7,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.App {
+  margin-top: 2em;
+}
+
+.content {
+  margin-top: 1em;
+  position: relative;
+}

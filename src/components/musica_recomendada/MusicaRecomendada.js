@@ -37,19 +37,15 @@ class MusicaRecomendada extends Component {
           <div className="col-sm-8">
             <h3>Música Recomendada</h3>
           </div>
-          <div className="col-sm-2">
-            <Link to="/inicioSesion">Iniciar sesión</Link>
-          </div>
-          <div className="col-sm-2">
-            <Link to="/albums">Albums</Link>
-          </div>
         </div>
         
         { this.state.loading ?
           <p>Cargando...</p>
           : <div className="cards">
-            {this.state.songs.map(song => 
-              <Card key={song.id} imageSrc="/images/cover.jpg" imageAlt={song.name} title={song.name} titleLink={`/reproductor/${song.id}`} descriptionLink={`/album/${song.album_id}`} descriptionLinkInfo="Enlace a album"/>
+            {this.state.songs.map(song => {
+              if (song.id % (Math.floor(Math.random() * (10 - 4)) + 4) == 0 ) 
+                return <Card key={song.id} imageSrc="/images/cover.jpg" imageAlt={song.name} title={song.name} titleLink={`/reproductor/${song.id}`} descriptionLink={`/album/${song.album_id}`} descriptionLinkInfo="Enlace a album"/>
+              }
             )}
           </div>
         }

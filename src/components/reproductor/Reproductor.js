@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // Css
-import './Reproductor.css';
+//import './Reproductor.css';
 
 class Reproductor extends Component {
   constructor(props) {
@@ -30,9 +30,10 @@ class Reproductor extends Component {
 
   render() {
     return (
-        <div className="reproductor">
+        // 1.2 Fragment
+        <>
           <audio ref="audio_tag" src={this.state.song.audio} controls autoPlay/>
-        </div>
+        </>
     );
   }
 }
