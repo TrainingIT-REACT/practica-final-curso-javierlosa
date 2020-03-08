@@ -6,8 +6,8 @@ const actions = [
   // songHistory
   "ADD_SONG",
 
-  // user
-  "UPDATE_USER"
+  // login
+  "LOGIN"
 ];
 
 // Las convertimos en un objeto

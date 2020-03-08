@@ -10,7 +10,7 @@ const initialState = {
 // Implementamos el reducer
 const reducer = (state = initialState, action) => {
   switch(action.type) {
-    case types.UPDATE_USER:
+    case types.LOGIN:
       return {
         name: action.name,
         username: action.username,

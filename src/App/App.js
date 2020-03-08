@@ -20,7 +20,6 @@ const Albums = React.lazy(() => import('../components/albums/Albums'));
 const Album = React.lazy(() => import('../components/album/Album'));
 const Song = React.lazy(() => import('../components/song/Song'));
 const Reproductor = React.lazy(() => import('../components/reproductor/Reproductor'));
-const InicioSesion = React.lazy(() => import('../components/inicio_sesion/UpdateUser'));
 const ErrorBoundaryExample = React.lazy(() => import('../components/error_boundary/ErrorBoundaryExample'));
 const HighOrderComponentExample = React.lazy(() => import('../components/high_order_component/HighOrderComponentExample'));
 const ModalExample = React.lazy(() => import('../components/modal_example/ModalExample'));
@@ -80,7 +79,6 @@ class App extends Component {
                 <li><NavLink activeClassName="active" to="/albums">Albums</NavLink></li>
                 <li><NavLink activeClassName="active" to="/login">Login</NavLink></li>
                 <li><NavLink activeClassName="active" to="/admin">Admin</NavLink></li>
-                <li><NavLink activeClassName="active" to="/inicioSesion">Admin</NavLink></li>
                 <li><NavLink activeClassName="active" to="/errorBoundaryExample">ErrorBoundaryExample</NavLink></li>
                 <li><NavLink activeClassName="active" to="/highOrderComponentExample">HighOrderComponentExample</NavLink></li>
                 <li><NavLink activeClassName="active" to="/modalExample">ModalExample</NavLink></li>
@@ -94,7 +92,6 @@ class App extends Component {
             <Route path="/album/:albumId" component={Album}/>
             <Route path="/reproductor/:songId" component={Reproductor}/>
             <Route path="/songs/:songId" component={Song}/>
-            <Route path="/inicioSesion" component={InicioSesion}/>
             <Route path="/login" exact component={Login}/>
             <PrivateRoute path="/admin" component={Admin}/>
             <Route path="/errorBoundaryExample" exact component={ErrorBoundaryExample}/>
