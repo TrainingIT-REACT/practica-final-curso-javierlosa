@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 // Css
 import './Albums.css';
 
-const Card = React.lazy(() => import('../utils/card/Card'));
+// Componentes
+import AlbumList from './AlbumList';
 
 class Albums extends Component {
   constructor(props) {
@@ -35,11 +36,7 @@ class Albums extends Component {
         <h3>Álbums disponibles</h3>
         { this.state.loading ?
           <p>Cargando...</p>
-          : <div className="cards">
-            {this.state.albums.map(album => 
-              <Card key={album.id} imageSrc={album.cover} imageAlt={album.name} title={album.name} description={album.artist} titleLink={`/album/${album.id}`}/>
-            )}
-          </div>
+          : <AlbumList albums={this.state.albums}/>
         }
         
       </div>
