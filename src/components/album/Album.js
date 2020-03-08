@@ -23,6 +23,7 @@ class Album extends Component {
     }
   }
 
+  // 5.1 Llamadas con fetch
   async componentDidMount() {
     try {
       const resAlbum = await fetch(`/albums/${this.props.match.params.albumId}`);

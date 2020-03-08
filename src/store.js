@@ -9,4 +9,4 @@ import login from './reducers/login';
 import logger from './middlewares/logger';
 
 // 4.2 Store
-export default createStore(combineReducers({ albumHistory, songHistory, login }, applyMiddleware(logger)));
+export default createStore(combineReducers({ albumHistory, songHistory, login }), applyMiddleware(logger));
