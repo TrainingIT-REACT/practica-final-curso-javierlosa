@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 
 // Css
 import './App.css';
@@ -20,7 +20,6 @@ const Albums = React.lazy(() => import('../components/albums/Albums'));
 const Album = React.lazy(() => import('../components/album/Album'));
 const Song = React.lazy(() => import('../components/song/Song'));
 const Reproductor = React.lazy(() => import('../components/reproductor/Reproductor'));
-const ErrorBoundaryExample = React.lazy(() => import('../components/error_boundary/ErrorBoundaryExample'));
 const HighOrderComponentExample = React.lazy(() => import('../components/high_order_component/HighOrderComponentExample'));
 const ModalExample = React.lazy(() => import('../components/modal_example/ModalExample'));
 const PureComponentExample = React.lazy(() => import('../components/pure_component_example/PureComponentExample'));
@@ -79,7 +78,6 @@ class App extends Component {
                 <li><NavLink activeClassName="active" to="/albums">Albums</NavLink></li>
                 <li><NavLink activeClassName="active" to="/login">Login</NavLink></li>
                 <li><NavLink activeClassName="active" to="/admin">Admin</NavLink></li>
-                <li><NavLink activeClassName="active" to="/errorBoundaryExample">ErrorBoundaryExample</NavLink></li>
                 <li><NavLink activeClassName="active" to="/highOrderComponentExample">HighOrderComponentExample</NavLink></li>
                 <li><NavLink activeClassName="active" to="/modalExample">ModalExample</NavLink></li>
                 <li><NavLink activeClassName="active" to="/pureComponentExample">PureComponentExample</NavLink></li>
@@ -87,20 +85,21 @@ class App extends Component {
                 <li><NavLink activeClassName="active" to="/about">Este ejemplo</NavLink></li>
               </ul>
             </nav>
-            <Route path="/" exact component={MusicaRecomendada}/>
-            <Route path="/albums" component={Albums}/>
-            <Route path="/album/:albumId" component={Album}/>
-            <Route path="/reproductor/:songId" component={Reproductor}/>
-            <Route path="/songs/:songId" component={Song}/>
-            <Route path="/login" exact component={Login}/>
-            <PrivateRoute path="/admin" component={Admin}/>
-            <Route path="/errorBoundaryExample" exact component={ErrorBoundaryExample}/>
-            <Route path="/highOrderComponentExample" exact component={HighOrderComponentExample}/>
-            <Route path="/modalExample" exact component={ModalExample}/>
-            <Route path="/pureComponentExample" exact component={PureComponentExample}/>
-            <Route path="/hooksExample" exact component={HooksExample}/>
-            <Route path="/about" component={this.About}/>
-            <Route component={this.NotFound}/>
+            <Switch>
+              <Route path="/" exact component={MusicaRecomendada}/>
+              <Route path="/albums" component={Albums}/>
+              <Route path="/album/:albumId" component={Album}/>
+              <Route path="/reproductor/:songId" component={Reproductor}/>
+              <Route path="/songs/:songId" component={Song}/>
+              <Route path="/login" exact component={Login}/>
+              <PrivateRoute path="/admin" component={Admin}/>
+              <Route path="/highOrderComponentExample" exact component={HighOrderComponentExample}/>
+              <Route path="/modalExample" exact component={ModalExample}/>
+              <Route path="/pureComponentExample" exact component={PureComponentExample}/>
+              <Route path="/hooksExample" exact component={HooksExample}/>
+              <Route path="/about" component={this.About}/>
+              <Route component={this.NotFound}/>
+            </Switch>
           </UserContext.Provider>
         </Router>
       </React.Suspense>

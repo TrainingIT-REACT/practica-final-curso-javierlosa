@@ -11,7 +11,10 @@ import './Login.css';
 // Store
 import store from '../../store';
 
+import ErrorBoundary from "../utils/ErrorBoundary";
+
 // Este componente utiliza el parámetro para mostrarlo en la interfaz
+// 1.3 Error boundary
 // 1.5 Context API
 // 1.6 Refs
 // 1.8 Control de formularios
@@ -42,23 +45,25 @@ const Login = ({ location, login }) => {
           <p>Ya puedes ir al panel de administración! 👆</p>
         ) : (
           <>
-            <form onSubmit={onSubmit}>
-              <div className="row col-sm-12 label-input">
-                <label htmlFor="name">¿Cuál es tu nombre?</label>
-                <input id="name" type="text" ref={name} placeholder="Angel, Tana, Raquel,..." onChange={onChangeName}/>
-              </div>
-              <div className="row col-sm-12 label-input">
-                <label htmlFor="username">¿Cuál es tu nombre de usuario?</label>
-                <input id="username" type="text" ref={username} placeholder="angel.user, tana.user, raquel.user ,..." onChange={onChangeUsername}/>
-              </div>
-              <div className="row col-sm-12 label-input">
-                <label htmlFor="password">¿Cuál es tu contraseña?</label>
-                <input id="password" type="text" ref={password} placeholder="ABCcde123,.-" />
-              </div>
-              <div className="row col-sm-12 label-input">
-                <button onClick={() => {updateUser(true); onSubmit()}}>Login</button>
-              </div>
-            </form>
+            <ErrorBoundary message="Ops! Algo ha salido mal en Title">
+              <form onSubmit={onSubmit}>
+                <div className="row col-sm-12 label-input">
+                  <label htmlFor="name">¿Cuál es tu nombre?</label>
+                  <input id="name" type="text" ref={name} placeholder="Angel, Tana, Raquel,..." onChange={onChangeName}/>
+                </div>
+                <div className="row col-sm-12 label-input">
+                  <label htmlFor="username">¿Cuál es tu nombre de usuario? (Min 4 caracteres -> salta error boundary)</label>
+                  <input id="username" type="text" ref={username} placeholder="angel.user, tana.user, raquel.user ,..." onChange={onChangeUsername}/>
+                </div>
+                <div className="row col-sm-12 label-input">
+                  <label htmlFor="password">¿Cuál es tu contraseña?</label>
+                  <input id="password" type="text" ref={password} placeholder="ABCcde123,.-" />
+                </div>
+                <div className="row col-sm-12 label-input">
+                  <button onClick={() => {updateUser(username.current.value.split('')[4].toLowerCase()); onSubmit()}}>Login</button>
+                </div>
+              </form>
+            </ErrorBoundary>
             { (location.state && location.state.message) &&
               <p>
                 { location.state.message }
