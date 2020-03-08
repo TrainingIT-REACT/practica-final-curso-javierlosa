@@ -62,3 +62,7 @@ nav ul {
 nav ul li {
   margin: 1em;
 }
+
+nav ul li a {
+  color: blue;
+}

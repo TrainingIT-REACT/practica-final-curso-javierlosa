@@ -19,6 +19,7 @@ import ErrorBoundary from "../utils/ErrorBoundary";
 // 1.6 Refs
 // 1.8 Control de formularios
 // 4.4 React y Redux 
+// 6.1 WAI-ARIA 
 const Login = ({ location, login }) => {
   const name = createRef();
   const username = createRef();
@@ -42,11 +43,12 @@ const Login = ({ location, login }) => {
     {({ signedIn, updateUser }) => {
       return <div>
         { signedIn ? (
-          <p>Ya puedes ir al panel de administración! 👆</p>
+          <p>Ya puedes ir al perfil! 👆</p>
         ) : (
           <>
             <ErrorBoundary message="Ops! Algo ha salido mal en Title">
               <form onSubmit={onSubmit}>
+                <h4>Pantalla WAI-ARIA!</h4>
                 <div className="row col-sm-12 label-input">
                   <label htmlFor="name">¿Cuál es tu nombre?</label>
                   <input id="name" type="text" ref={name} placeholder="Angel, Tana, Raquel,..." onChange={onChangeName}/>

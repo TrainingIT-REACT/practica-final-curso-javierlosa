@@ -77,7 +77,7 @@ class App extends Component {
                 <li><NavLink activeClassName="active" exact to="/">Inicio</NavLink></li>
                 <li><NavLink activeClassName="active" to="/albums">Albums</NavLink></li>
                 <li><NavLink activeClassName="active" to="/login">Login</NavLink></li>
-                <li><NavLink activeClassName="active" to="/admin">Admin</NavLink></li>
+                <li><NavLink activeClassName="active" to="/admin">Perfil</NavLink></li>
                 <li><NavLink activeClassName="active" to="/highOrderComponentExample">HighOrderComponentExample</NavLink></li>
                 <li><NavLink activeClassName="active" to="/modalExample">ModalExample</NavLink></li>
                 <li><NavLink activeClassName="active" to="/pureComponentExample">PureComponentExample</NavLink></li>
