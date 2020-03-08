@@ -1,5 +1,8 @@
-// Definimos la lista de acciones
+// 4.3 Acciones
 const actions = [
+  // albumHistory
+  "ADD_ALBUM",
+  
   // songHistory
   "ADD_SONG",
 

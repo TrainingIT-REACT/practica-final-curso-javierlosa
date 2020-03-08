@@ -1,7 +1,9 @@
 import { createStore, combineReducers } from "redux";
 
-// Reducers
-import todos from './reducers/songHistory';
+// 4.3 Reducers
+import albumHistory from './reducers/albumHistory';
+import songHistory from './reducers/songHistory';
 import user from './reducers/user';
 
-export default createStore(combineReducers({ todos, user }));
+// 4.2 Store
+export default createStore(combineReducers({ albumHistory, songHistory, user }));

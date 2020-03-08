@@ -9,9 +9,10 @@ import Popper from 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { Provider } from "react-redux";
 
-// Store
+// 4.2 Store
 import store from './store';
 
+// 2.2 Concurrent mode (StrictMode)
 ReactDOM.render(
   <Provider store={store}>
     <main>

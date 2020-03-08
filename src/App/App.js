@@ -14,7 +14,7 @@ import Admin from '../components/inicio_sesion/Admin';
 // Componente para definir rutas privadas
 import PrivateRoute from '../components/inicio_sesion/PrivateRoute';
 
-//import Home from './Home/Home';
+// 2.1 Suspense y Lazy 
 const MusicaRecomendada = React.lazy(() => import('../components/musica_recomendada/MusicaRecomendada'));
 const Albums = React.lazy(() => import('../components/albums/Albums'));
 const Album = React.lazy(() => import('../components/album/Album'));
@@ -38,12 +38,36 @@ class App extends Component {
       signedIn: false,
       updateUser: this.updateUser,
     }
+
+
+    // Rutas anidadas
+    const AboutMe = () => <p>Mi nombre es Ángel!</p>;
+    const AboutCourse = () => <p>Bienvenido o Bienvenida a este curso de React!</p>;
+
+    // Este componente define rutas anidadas
+    this.About = ({ match }) => <div>
+      <p>Este ejemplo trata sobre React Router</p>
+      <p>
+        <NavLink activeClassName="active" to={`${match.url}/me`}>Sobre mi</NavLink>
+        {' '}
+        <NavLink activeClassName="active" to={`${match.url}/course`}>Sobre este curso</NavLink>
+      </p>
+      <Route path={`${match.url}/me`} component={AboutMe}/>
+      <Route path={`${match.url}/course`} component={AboutCourse}/>
+    </div>;
+
+    this.NotFound = () => <p>Ups! Parece que aquí no hay nada (404)</p>;
   }
 
   updateUser(signedIn) {
     this.setState(() => ({ signedIn }));
   }
+  
 
+  // 3.1 React Router
+  // 3.2 Parámetros en rutas
+  // 3.4 Rutas privadas
+  // 3.5 404
   render() {
     return (
       <React.Suspense fallback="Cargando Musica Recomendada">
@@ -62,6 +86,7 @@ class App extends Component {
                 <li><NavLink activeClassName="active" to="/modalExample">ModalExample</NavLink></li>
                 <li><NavLink activeClassName="active" to="/pureComponentExample">PureComponentExample</NavLink></li>
                 <li><NavLink activeClassName="active" to="/hooksExample">HooksExample</NavLink></li>
+                <li><NavLink activeClassName="active" to="/about">Este ejemplo</NavLink></li>
               </ul>
             </nav>
             <Route path="/" exact component={MusicaRecomendada}/>
@@ -77,6 +102,8 @@ class App extends Component {
             <Route path="/modalExample" exact component={ModalExample}/>
             <Route path="/pureComponentExample" exact component={PureComponentExample}/>
             <Route path="/hooksExample" exact component={HooksExample}/>
+            <Route path="/about" component={this.About}/>
+            <Route component={this.NotFound}/>
           </UserContext.Provider>
         </Router>
       </React.Suspense>

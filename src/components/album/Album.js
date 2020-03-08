@@ -3,6 +3,12 @@ import React, { Component } from 'react';
 // Css
 import './Album.css';
 
+// Acciones
+import { addAlbum } from '../../actions/albumHistory';
+
+// Store
+import store from '../../store';
+
 const Song = React.lazy(() => import('../song/Song'));
 
 class Album extends Component {
@@ -35,6 +41,8 @@ class Album extends Component {
         duration: duration + ' minutos'
       }));
 
+      // 4.2 Añade al store la canción a reproducir
+      store.dispatch(addAlbum(this.state.album));
     } catch(err) {
       console.error("Error accediendo al servidor", err);
     }

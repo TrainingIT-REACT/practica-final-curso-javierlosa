@@ -6,5 +6,6 @@ export const addSong = (song) => ({
   name: song.name, 
   audio: song.audio, 
   seconds: song.seconds, 
-  album_id: song.album_id
+  album_id: song.album_id,
+  song
 });
