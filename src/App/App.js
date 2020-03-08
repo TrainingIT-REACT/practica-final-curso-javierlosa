@@ -20,10 +20,6 @@ const Albums = React.lazy(() => import('../components/albums/Albums'));
 const Album = React.lazy(() => import('../components/album/Album'));
 const Song = React.lazy(() => import('../components/song/Song'));
 const Reproductor = React.lazy(() => import('../components/reproductor/Reproductor'));
-const HighOrderComponentExample = React.lazy(() => import('../components/high_order_component/HighOrderComponentExample'));
-const ModalExample = React.lazy(() => import('../components/modal_example/ModalExample'));
-const PureComponentExample = React.lazy(() => import('../components/pure_component_example/PureComponentExample'));
-const HooksExample = React.lazy(() => import('../components/hooks_example/HooksExample'));
 
 class App extends Component {
   constructor(props) {
@@ -36,23 +32,6 @@ class App extends Component {
       signedIn: false,
       updateUser: this.updateUser,
     }
-
-
-    // Rutas anidadas
-    const AboutMe = () => <p>Mi nombre es Ángel!</p>;
-    const AboutCourse = () => <p>Bienvenido o Bienvenida a este curso de React!</p>;
-
-    // Este componente define rutas anidadas
-    this.About = ({ match }) => <div>
-      <p>Este ejemplo trata sobre React Router</p>
-      <p>
-        <NavLink activeClassName="active" to={`${match.url}/me`}>Sobre mi</NavLink>
-        {' '}
-        <NavLink activeClassName="active" to={`${match.url}/course`}>Sobre este curso</NavLink>
-      </p>
-      <Route path={`${match.url}/me`} component={AboutMe}/>
-      <Route path={`${match.url}/course`} component={AboutCourse}/>
-    </div>;
 
     this.NotFound = () => <p>Ups! Parece que aquí no hay nada (404)</p>;
   }
@@ -71,18 +50,12 @@ class App extends Component {
       <React.Suspense fallback="Cargando Musica Recomendada">
         <Router>
           <UserContext.Provider value={this.state}>
-            <h1>Javify</h1>
             <nav>
               <ul>
                 <li><NavLink activeClassName="active" exact to="/">Inicio</NavLink></li>
                 <li><NavLink activeClassName="active" to="/albums">Albums</NavLink></li>
                 <li><NavLink activeClassName="active" to="/login">Login</NavLink></li>
                 <li><NavLink activeClassName="active" to="/admin">Perfil</NavLink></li>
-                <li><NavLink activeClassName="active" to="/highOrderComponentExample">HighOrderComponentExample</NavLink></li>
-                <li><NavLink activeClassName="active" to="/modalExample">ModalExample</NavLink></li>
-                <li><NavLink activeClassName="active" to="/pureComponentExample">PureComponentExample</NavLink></li>
-                <li><NavLink activeClassName="active" to="/hooksExample">HooksExample</NavLink></li>
-                <li><NavLink activeClassName="active" to="/about">Este ejemplo</NavLink></li>
               </ul>
             </nav>
             <Switch>
@@ -93,11 +66,6 @@ class App extends Component {
               <Route path="/songs/:songId" component={Song}/>
               <Route path="/login" exact component={Login}/>
               <PrivateRoute path="/admin" component={Admin}/>
-              <Route path="/highOrderComponentExample" exact component={HighOrderComponentExample}/>
-              <Route path="/modalExample" exact component={ModalExample}/>
-              <Route path="/pureComponentExample" exact component={PureComponentExample}/>
-              <Route path="/hooksExample" exact component={HooksExample}/>
-              <Route path="/about" component={this.About}/>
               <Route component={this.NotFound}/>
             </Switch>
           </UserContext.Provider>
